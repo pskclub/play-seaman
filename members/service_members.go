@@ -19,6 +19,7 @@ type IMemberService interface {
 }
 
 func NewMemberService(options *MemberServiceOptions) IMemberService {
+
 	return &memberService{
 		ctx:            options.Context,
 		cfg:            options.Config,
