@@ -44,6 +44,7 @@ func (svc *ProductHTTP) handleGetProduct(ctx seaman.IContext, service IProductSe
 
 	product, err := service.Find(id, &FindProductServiceOptions{})
 	if err != nil {
+		//ctx.JSON(err.GetStatus(), err.JSON())
 		return nil, ctx.NewError(err, err, id)
 	}
 
