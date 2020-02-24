@@ -7,7 +7,8 @@ import (
 	"bitbucket.org/3dsinteractive/seaman"
 	"flag"
 	"fmt"
-	"golang-guideline/products"
+	members2 "golang-guideline/members"
+	products2 "golang-guideline/products"
 	"strings"
 )
 
@@ -43,7 +44,9 @@ func (r *runner) start(cfg config.IConfig) {
 
 	defer s.Close()
 
-	s.RegisterService(products.NewProductHTTP(cfg))
+	s.RegisterService(products2.NewProductHTTP(cfg))
+	s.RegisterService(members2.NewMemberHTTP(cfg))
+	s.RegisterService(products2.NewProductMQ(cfg))
 
 	// Register /healthz on every service
 	s.RegisterService(healthcheck.NewHealthcheckHTTP(cfg))

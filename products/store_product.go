@@ -1,16 +1,16 @@
 package products
 
 import (
-	"bitbucket.org/3dsinteractive/pam4/config"
 	"bitbucket.org/3dsinteractive/seaman"
+	"golang-guideline/config"
 	"golang-guideline/models"
 )
 
 type IProductStore interface {
 	Find(id string, options *FindProductStoreOptions) (interface{}, seaman.IError)
-	GetPage(pageOptions *models.PageOptions, options *GetPageProductStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError)
-	GetAfter(pageOptions *models.AfterOptions, options *GetAfterProductStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError)
-	GetBefore(pageOptions *models.BeforeOptions, options *GetBeforeProductStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError)
+	GetPage(pageOptions *models.PageOptions, options *GetProductPageStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError)
+	GetAfter(pageOptions *models.AfterOptions, options *GetProductAfterStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError)
+	GetBefore(pageOptions *models.BeforeOptions, options *GetProductBeforeStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError)
 	GetAll(options *GetAllProductStoreOptions) ([]interface{}, seaman.IError)
 	Delete(id string) seaman.IError
 	Update(id string, data interface{}) (interface{}, seaman.IError)
@@ -19,8 +19,8 @@ type IProductStore interface {
 
 func NewProductStore(options *ProductStoreOptions) IProductStore {
 	return &productStore{
-		ctx: options.ctx,
-		cfg: options.cfg,
+		ctx: options.Context,
+		cfg: options.Config,
 	}
 }
 
@@ -33,15 +33,15 @@ func (s productStore) Find(id string, options *FindProductStoreOptions) (interfa
 	panic("implement me")
 }
 
-func (s productStore) GetPage(pageOptions *models.PageOptions, options *GetPageProductStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError) {
+func (s productStore) GetPage(pageOptions *models.PageOptions, options *GetProductPageStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError) {
 	panic("implement me")
 }
 
-func (s productStore) GetAfter(pageOptions *models.AfterOptions, options *GetAfterProductStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError) {
+func (s productStore) GetAfter(pageOptions *models.AfterOptions, options *GetProductAfterStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError) {
 	panic("implement me")
 }
 
-func (s productStore) GetBefore(pageOptions *models.BeforeOptions, options *GetBeforeProductStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError) {
+func (s productStore) GetBefore(pageOptions *models.BeforeOptions, options *GetProductBeforeStoreOptions) ([]interface{}, *models.PaginationMeta, seaman.IError) {
 	panic("implement me")
 }
 
